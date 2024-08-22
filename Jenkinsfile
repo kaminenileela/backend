@@ -38,37 +38,37 @@ pipeline {
                 """
             }
         }
-         stage('Nexus Artifact Upload'){
-            steps{
-                script{
-                     nexusArtifactUploader(
-                        nexusVersion: 'nexus3',
-                        protocol: 'http',
-                        nexusUrl: "${nexusUrl}",
-                        groupId: 'com.expense',
-                        version: "${appVersion}",
-                        repository: "backend",
-                        credentialsId: 'nexus-auth',
-                        artifacts: [
-                            [artifactId: backend,
-                            classifier: '',
-                            file: "backend-" + "${appVersion}" + '.zip',
-                            type: 'zip']
-                        ]
-                    )
-                }
-            }
-        }
-        stage('Deploy'){
-            steps{
-                script{
-                     def params = [
-                        string(name: 'appVersion', value: "${appVersion}")
-                     ]
-                     build job: 'backend-deploy', parameters: params, wait: false
-                }
-            }
-        }
+        //  stage('Nexus Artifact Upload'){
+        //     steps{
+        //         script{
+        //              nexusArtifactUploader(
+        //                 nexusVersion: 'nexus3',
+        //                 protocol: 'http',
+        //                 nexusUrl: "${nexusUrl}",
+        //                 groupId: 'com.expense',
+        //                 version: "${appVersion}",
+        //                 repository: "backend",
+        //                 credentialsId: 'nexus-auth',
+        //                 artifacts: [
+        //                     [artifactId: backend,
+        //                     classifier: '',
+        //                     file: "backend-" + "${appVersion}" + '.zip',
+        //                     type: 'zip']
+        //                 ]
+        //             )
+        //         }
+        //     }
+        // }
+        // stage('Deploy'){
+        //     steps{
+        //         script{
+        //              def params = [
+        //                 string(name: 'appVersion', value: "${appVersion}")
+        //              ]
+        //              build job: 'backend-deploy', parameters: params, wait: false
+        //         }
+        //     }
+        // }
     }
     post{
         always{
