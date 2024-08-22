@@ -9,7 +9,7 @@ pipeline {
     }
     environment{
         def appVersion = '' //variable declaration
-        nexusUrl = 'nexus.learningdevopsaws.online'
+        nexusUrl = 'nexus.learningdevopsaws.online:8081'
 
     }
     stages{
