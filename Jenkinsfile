@@ -9,7 +9,7 @@ pipeline {
     }
     environment{
         def appVersion = '' //variable declaration
-        nexusUrl = 'nexus.learningdevopsaws.online:8081'
+        nexusUrl = 'http://http://3.235.1.47:8081/'
 
     }
     stages{
@@ -33,8 +33,8 @@ pipeline {
         stage('Build'){
             steps{
                 sh """
-                zip -q -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip 
-
+                zip -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip 
+                ls -ltr
                 """
             }
         }
