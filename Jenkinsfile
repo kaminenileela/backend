@@ -74,7 +74,7 @@ pipeline {
     post{
         always{
             echo 'I will always say hello'
-            deleteDir()
+            // deleteDir()
         }
         success{
             echo 'I will run when pipeline is success'
