@@ -42,20 +42,20 @@ pipeline {
                 """
             }
         }
-        // stage('Sonar Scan'){
-        //     environment {
-        //         scannerHome = tool 'Sonar'  //referring scanner CLI
-        //     }
-        //     steps {
-        //         script {
-        //             withSonarQubeEnv('Sonar') { //referring sonar server
-        //                 sh "${scannerHome}/bin/sonar-scanner"
-        //             }  
+        stage('Sonar Scan'){
+            environment {
+                scannerHome = tool 'Sonar'  //referring scanner CLI
+            }
+            steps {
+                script {
+                    withSonarQubeEnv('Sonar') { //referring sonar server
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }  
 
-        //         }
-        //     }
+                }
+            }
 
-        // }
+        }
 
         // stage("Quality Gate") {
         //     steps {
